@@ -1,13 +1,10 @@
-const { readFile } = require('fs')
+const http = require('http');
 
-console.log('started a first task');
-// CHECK FILE PATH!!!!
-readFile('./content/first.txt', 'utf8', (err, result) => {
-    if (err) {
-        console.log(err)
-        return
-    }
-    console.log(result)
-    console.log('completed first task');
-})
-console.log('starting next task');
+const server = http.createServer((req, res) => {
+    console.log('request event');
+    res.end('Hello World');
+    });
+server.listen(5000, () => {
+    console.log('Server listening on port : 5000....');
+    });
+// Event Loop
